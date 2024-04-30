@@ -83,8 +83,6 @@ target_link_libraries(
 )
 target_include_directories(test_main PUBLIC
         include
-        #${CMAKE_CURRENT_SOURCE_DIR}/external/physfs-release-3.2.0/src
-        #${CMAKE_CURRENT_SOURCE_DIR}/external/raylib-5.0/src
 )
 include(GoogleTest)
 gtest_discover_tests(test_main)
