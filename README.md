@@ -1,9 +1,10 @@
 # librge
+
 Retro Game Engine (rge) Library
 
 ## Scratch pad
 
-Build notes: 
+Build notes:
 
 ```
 mkdir build && cd build
