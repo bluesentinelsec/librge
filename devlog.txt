@@ -1,22 +1,41 @@
-## Scratch pad
+4/30/2024
+librge is short for lib retro game engine.
+librge is intended to make retro game programming fun.
 
-Build notes:
+What would we want from a library to make retro game programming fun?
+Here is my stream of consciousness:
+- the library should support professional-grade projects:
+    - easy to build, test, learn, and use
+    - the code should be clean, documented, and tested
+    - there should be professional-grade examples (a finished, non-trivial game)
+
+- developers should get to focus on coding fun business logic, not boring systems code
+- developers should be able to use this library from any programming language they want
+- the library should offer constructs that bridge the gap between game library and a game engine:
+    - examples of fully packaged ready-to-ship binaries and media files
+    - game windows should support logical scaling for low-res games
+    - virtual file system
+    - abstractions for input devices:
+        input.shoot == keyboard.press && gamepad.press && mouse.press
+    - graceful handling of multiple hardware devices (monitors, gamepads, etc.)
+    - can we let users pick their coordinate system?
+
+Backlog: Build improvements:
+- Add options for release and debug builds
 
 ```
-mkdir build && cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release  # Or Debug
-cmake --build .
 ```
+- Setup automated test, build, deploy workflow
+- Deploy targets: Windows, macOS, Linux, Web
+- Add sanitizer builds
 
-TODO:
-1. Verify build on Linux and macOS
-2. Setup web build
-3. Setup test, build, deploy CI/CD
-4. Setup console logging (debug, info, error, warning)
-5. Implement systems handler
-6. Implement virtual file system
-7. Implement windowing, scaling, and drawing
-8. Implement delta time and frame rates
-9. Implement sound and music
-10. Implement true type font renderer
-11. Implement input handlers (keyboard, mouse, gamepad)
+Backlog: Engine work:
+1. Setup console logging (debug, info, error, warning)
+2. Implement systems handler
+3. Implement virtual file system
+4. Implement windowing, scaling, and drawing
+5. Implement delta time and frame rates
+6. Implement sound and music
+7. Implement true type font renderer
+8. Implement input handlers (keyboard, mouse, gamepad)
