@@ -35,3 +35,4 @@
 build
 cmake-build*
 venv
+devlog.txt

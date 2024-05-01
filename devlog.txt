@@ -1,0 +1,22 @@
+## Scratch pad
+
+Build notes:
+
+```
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release  # Or Debug
+cmake --build .
+```
+
+TODO:
+1. Verify build on Linux and macOS
+2. Setup web build
+3. Setup test, build, deploy CI/CD
+4. Setup console logging (debug, info, error, warning)
+5. Implement systems handler
+6. Implement virtual file system
+7. Implement windowing, scaling, and drawing
+8. Implement delta time and frame rates
+9. Implement sound and music
+10. Implement true type font renderer
+11. Implement input handlers (keyboard, mouse, gamepad)
