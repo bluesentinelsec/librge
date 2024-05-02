@@ -1,3 +1,8 @@
+5/2/2024
+- set the build type to C++ 20 to build in Visual Studio
+- added a console logger; you can set a preprocessor directive to disable debug logs (NDEBUG)
+- added basic window functions
+
 4/30/2024
 librge is short for lib retro game engine.
 librge is intended to make retro game programming fun.
@@ -31,7 +36,7 @@ cmake .. -DCMAKE_BUILD_TYPE=Release  # Or Debug
 - Add sanitizer builds
 
 Backlog: Engine work:
-1. Setup console logging (debug, info, error, warning)
+1. [+] Setup console logging (debug, info, error, warning)
 2. Implement systems handler
 3. Implement virtual file system
 4. Implement windowing, scaling, and drawing

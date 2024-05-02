@@ -1,22 +1,25 @@
 cmake_minimum_required(VERSION 3.14)
 project(librge VERSION 1.0 DESCRIPTION "librge library")
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif ()
 
+
 #--------------------------
 #   Source files
 #--------------------------
 set(SOURCE_FILES
         src/systems.cpp
+        src/engine.cpp
 )
 
 set(HEADER_FILES
         include/librge/rge.h
+        include/librge/logger.h
 )
 
 add_subdirectory(external/physfs-release-3.2.0)
@@ -24,6 +27,11 @@ add_subdirectory(external/raylib-5.0)
 
 add_library(rge_static STATIC ${SOURCE_FILES} ${HEADER_FILES})
 add_library(rge_shared SHARED ${SOURCE_FILES} ${HEADER_FILES})
+
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    target_compile_definitions(rge_shared PRIVATE NDEBUG)
+    target_compile_definitions(rge_static PRIVATE NDEBUG)
+endif()
 
 #--------------------------
 #   Header includes
