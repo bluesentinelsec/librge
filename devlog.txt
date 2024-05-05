@@ -1,3 +1,9 @@
+5/5/2024
+- added init/deinit code for virtual filesystem (via physfs)
+- confirmed build on macOS; still need to validate packaging and signing as an app bundle in Xcode
+- reviewed window scaling approaches; need virtual fs in place before
+- this can be implemented
+
 5/2/2024
 - set the build type to C++ 20 to build in Visual Studio
 - added a console logger; you can set a preprocessor directive to disable debug logs (NDEBUG)

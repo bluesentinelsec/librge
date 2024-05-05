@@ -5,7 +5,7 @@
 TEST(LibraryTests, TestEngine)
 {
 
-	EXPECT_EQ(0, rgeInit(320, 200, "test"));
+	EXPECT_EQ(0, rgeInit(NULL, "test_org", "test_app", ".zip", 320, 200, "test"));
 
 	while (!rgeIsWindowClosing())
 	{

@@ -9,7 +9,16 @@ extern "C"
 
 #include <stdbool.h>
 
-int rgeInit(int width, int height, const char* title);
+int
+rgeInit(const char* argv0,
+		const char* organization,
+		const char* appName,
+		const char* archiveExt,
+		int width,
+		int height,
+		const char* title
+);
+
 void rgeExit();
 bool rgeIsWindowClosing();
 void rgeBeginFrame();
