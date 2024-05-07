@@ -5,7 +5,16 @@
 TEST(LibraryTests, TestEngine)
 {
 
-	EXPECT_EQ(0, rgeInit(NULL, "test_org", "test_app", ".zip", 320, 200, "test"));
+	int ret = rgeInit(NULL,
+			"test_org",
+			"test_app",
+			".zip",
+			"media",
+			320,
+			200,
+			"test");
+
+	GTEST_ASSERT_EQ(0, ret);
 
 	while (!rgeIsWindowClosing())
 	{

@@ -14,8 +14,9 @@ rgeInit(const char* argv0,
 		const char* organization,
 		const char* appName,
 		const char* archiveExt,
-		int width,
-		int height,
+		const char* mediaPath,
+		const int width,
+		const int height,
 		const char* title
 );
 
@@ -24,6 +25,7 @@ bool rgeIsWindowClosing();
 void rgeBeginFrame();
 void rgeEndFrame();
 void rgeClearRenderer(int r, int g, int b, int a);
+
 
 #ifdef __cplusplus
 }
