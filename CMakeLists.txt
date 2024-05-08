@@ -10,11 +10,12 @@ endif ()
 
 
 #--------------------------
-#   Source files
+#   Source and header files
 #--------------------------
 set(SOURCE_FILES
         src/systems.cpp
         src/engine.cpp
+        src/fileio.cpp
 )
 
 set(HEADER_FILES
@@ -22,6 +23,11 @@ set(HEADER_FILES
         include/librge/logger.h
 )
 
+
+#--------------------------
+#   Add external projects and
+#   define build outputs
+#--------------------------
 add_subdirectory(external/physfs-release-3.2.0)
 add_subdirectory(external/raylib-5.0)
 

@@ -8,6 +8,7 @@ extern "C"
 #include "logger.h"
 
 #include <stdbool.h>
+#include <assert.h>
 
 int
 rgeInit(const char* argv0,
@@ -25,6 +26,9 @@ bool rgeIsWindowClosing();
 void rgeBeginFrame();
 void rgeEndFrame();
 void rgeClearRenderer(int r, int g, int b, int a);
+
+int rgeGetMediaFileSize(const char *path);
+int rgeReadMediaFile(const char *path, char *buffer, int size);
 
 
 #ifdef __cplusplus
