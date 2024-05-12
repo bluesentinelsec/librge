@@ -1,3 +1,9 @@
+5/12/2024
+- added basic texture rendering
+- spent a while troubleshooting a failed PHYSFS file load
+- it was caused by an invalid filepath; we provided "media/images/foo.png" but "images/foo.png" was expected
+- need to start working on proper window resizing and scaling next
+
 5/6/2024
 - added media archive mount to virtual filesystem
 - refactored for cleanliness
