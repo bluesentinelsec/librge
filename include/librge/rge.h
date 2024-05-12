@@ -27,9 +27,13 @@ void rgeBeginFrame();
 void rgeEndFrame();
 void rgeClearRenderer(int r, int g, int b, int a);
 
-int rgeGetMediaFileSize(const char *path);
-int rgeReadMediaFile(const char *path, char *buffer, int size);
+int rgeGetMediaFileSize(const char* path);
+int rgeReadMediaFile(const char* path, char* buffer, int size);
 
+void* rgeLoadMediaImage(const char* fileName);
+void rgeFreeMediaImage(void *texture);
+
+void rgeDrawTexture(void *texture, int x, int y);
 
 #ifdef __cplusplus
 }

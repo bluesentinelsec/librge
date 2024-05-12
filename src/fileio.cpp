@@ -11,7 +11,7 @@ int rgeGetMediaFileSize(const char* path)
 	if (!file)
 	{
 		rgeLogError("unable to open file: '%s' - %s\n", path, PHYSFS_getErrorByCode(PHYSFS_getLastErrorCode()));
-		return 1;
+		return -1;
 	}
 
 	PHYSFS_sint64 fileSize = PHYSFS_fileLength(file);

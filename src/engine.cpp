@@ -99,12 +99,14 @@ static int initVirtualFS(const char* argv0,
 		return 1;
 	}
 
+
 	ret = PHYSFS_setSaneConfig(organization, appName, archiveExt, 0, 0);
 	if (ret == 0)
 	{
 		rgeLogError("unable to set virtual file system config: %s\n", PHYSFS_getErrorByCode(PHYSFS_getLastErrorCode()));
 		return 1;
 	}
+
 
 	rgeLogDebug("mounting media directory or archive: '%s'\n", mediaPath);
 	ret = PHYSFS_mount(mediaPath, "/", 0);
@@ -115,4 +117,10 @@ static int initVirtualFS(const char* argv0,
 		return 1;
 	}
 	return 0;
+}
+
+void rgeDrawTexture(void* texture, int x, int y)
+{
+	auto raylibTex = (Texture2D*)texture;
+	DrawTexture(*raylibTex, x, y, WHITE);
 }

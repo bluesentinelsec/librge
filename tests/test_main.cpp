@@ -12,9 +12,12 @@ TEST(LibraryTests, TestEngine)
 			"media",
 			320,
 			200,
-			"test");
+			"test_librge");
 
 	GTEST_ASSERT_EQ(0, ret);
+
+	void* backgroundTexture = rgeLoadMediaImage("images/background320x200.png");
+	GTEST_ASSERT_TRUE(backgroundTexture != nullptr);
 
 	while (!rgeIsWindowClosing())
 	{
@@ -22,8 +25,11 @@ TEST(LibraryTests, TestEngine)
 
 		rgeClearRenderer(255, 0, 0, 255);
 
+		rgeDrawTexture(backgroundTexture, 0, 0);
+
 		rgeEndFrame();
 	}
 
+	rgeFreeMediaImage(backgroundTexture);
 	rgeExit();
 }
