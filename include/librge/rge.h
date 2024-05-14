@@ -34,6 +34,7 @@ void* rgeLoadMediaImage(const char* fileName);
 void rgeFreeMediaImage(void *texture);
 
 void rgeDrawTexture(void *texture, int x, int y);
+void rgeFlipBackbuffer(int w, int h);
 
 #ifdef __cplusplus
 }

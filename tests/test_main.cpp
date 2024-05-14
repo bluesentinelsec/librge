@@ -28,6 +28,7 @@ TEST(LibraryTests, TestEngine)
 		rgeDrawTexture(backgroundTexture, 0, 0);
 
 		rgeEndFrame();
+		rgeFlipBackbuffer(320, 200);
 	}
 
 	rgeFreeMediaImage(backgroundTexture);

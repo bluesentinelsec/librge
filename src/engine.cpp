@@ -3,6 +3,8 @@
 #include <physfs.h>
 #include <raylib.h>
 
+static RenderTexture2D backbuffer;
+
 static int initVirtualFS(const char* argv0,
 		const char* organization,
 		const char* appName,
@@ -40,6 +42,9 @@ void rgeExit()
 {
 	rgeLogInfo("closing game engine");
 
+	rgeLogDebug("closing backbuffer texture");
+	UnloadRenderTexture(backbuffer);
+
 	rgeLogDebug("closing game window");
 	CloseWindow();
 
@@ -58,12 +63,14 @@ bool rgeIsWindowClosing()
 
 void rgeBeginFrame()
 {
+	BeginTextureMode(backbuffer);
 	BeginDrawing();
 }
 
 void rgeEndFrame()
 {
 	EndDrawing();
+	EndTextureMode();
 }
 
 void rgeClearRenderer(int r, int g, int b, int a)
@@ -79,6 +86,7 @@ static void initGameWindow(const int width, const int height, const char* title)
 
 	InitWindow(width, height, title);
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
+	backbuffer = LoadRenderTexture(width, height);
 
 // disable close on ESC on release builds
 #ifdef NDEBUG
@@ -123,4 +131,19 @@ void rgeDrawTexture(void* texture, int x, int y)
 {
 	auto raylibTex = (Texture2D*)texture;
 	DrawTexture(*raylibTex, x, y, WHITE);
+}
+
+void rgeFlipBackbuffer(int w, int h)
+{
+	BeginDrawing();
+	ClearBackground(WHITE);
+
+	DrawTexturePro(backbuffer.texture,
+			(Rectangle){ 0.0f, 0.0f, static_cast<float>(w), static_cast<float>(h) },
+			(Rectangle){ 0.0f, 0.0f, static_cast<float>(w), static_cast<float>(h) },
+			(Vector2){ static_cast<float>(w), static_cast<float>(h) },
+			180.0f,
+			WHITE);
+
+	EndDrawing();
 }
