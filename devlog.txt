@@ -1,7 +1,6 @@
-5/13/2024
-- Added a backbuffer for scaled rendering
-- The backbuffer initially rendered upside down
-- Needed to use DrawTexturePro to fix it; origin needed to be set to the backbuffer width and height (weird)
+5/26/2024
+- added proper window scaling
+
 
 5/12/2024
 - added basic texture rendering
