@@ -41,6 +41,7 @@ void rgeEndFrameBuffer();
 void rgeFlipFrameBuffer(void* frameBuffer);
 void rgeScaleFrameBuffer(int originalWidth, int originalHeight);
 
+
 #ifdef __cplusplus
 }
 #endif

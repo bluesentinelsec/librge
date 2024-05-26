@@ -1,6 +1,7 @@
 5/26/2024
 - added proper window scaling
 
+
 5/12/2024
 - added basic texture rendering
 - spent a while troubleshooting a failed PHYSFS file load

@@ -3,11 +3,13 @@
 #include <physfs.h>
 #include <raylib.h>
 
+
 // variables used for scaling the framebuffer to display size
 float scaledWidth;
 float scaledHeight;
 float paddingX;
 float paddingY;
+
 
 
 static int initVirtualFS(const char* argv0,
@@ -48,6 +50,9 @@ void rgeExit()
 {
 	rgeLogInfo("closing game engine");
 
+	rgeLogDebug("closing backbuffer texture");
+	UnloadRenderTexture(backbuffer);
+
 	rgeLogDebug("closing game window");
 	CloseWindow();
 
@@ -66,12 +71,14 @@ bool rgeIsWindowClosing()
 
 void rgeBeginFrame()
 {
+	BeginTextureMode(backbuffer);
 	BeginDrawing();
 }
 
 void rgeEndFrame()
 {
 	EndDrawing();
+	EndTextureMode();
 }
 
 void rgeClearRenderer(int r, int g, int b, int a)
@@ -87,6 +94,7 @@ static void initGameWindow(const int width, const int height, const char* title)
 
 	InitWindow(width, height, title);
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
+	backbuffer = LoadRenderTexture(width, height);
 
 // disable close on ESC on release builds
 #ifdef NDEBUG
@@ -199,4 +207,5 @@ void rgeScaleFrameBuffer(int originalWidth, int originalHeight)
 	// Calculate padding to center the scaled image
 	paddingX = (targetWidth - scaledWidth) / 2;
 	paddingY = (targetHeight - scaledHeight) / 2;
+
 }
