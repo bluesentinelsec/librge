@@ -31,9 +31,15 @@ int rgeGetMediaFileSize(const char* path);
 int rgeReadMediaFile(const char* path, char* buffer, int size);
 
 void* rgeLoadMediaImage(const char* fileName);
-void rgeFreeMediaImage(void *texture);
+void rgeFreeMediaImage(void* texture);
 
-void rgeDrawTexture(void *texture, int x, int y);
+void rgeDrawTexture(void* texture, int x, int y);
+void* rgeCreateFrameBuffer(int w, int h);
+void rgeFreeFrameBuffer(void* frameBuffer);
+void rgeSetFrameBuffer(void* frameBuffer);
+void rgeEndFrameBuffer();
+void rgeFlipFrameBuffer(void* frameBuffer);
+void rgeScaleFrameBuffer(int originalWidth, int originalHeight);
 
 #ifdef __cplusplus
 }

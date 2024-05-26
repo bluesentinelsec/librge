@@ -3,6 +3,13 @@
 #include <physfs.h>
 #include <raylib.h>
 
+// variables used for scaling the framebuffer to display size
+float scaledWidth;
+float scaledHeight;
+float paddingX;
+float paddingY;
+
+
 static int initVirtualFS(const char* argv0,
 		const char* organization,
 		const char* appName,
@@ -32,6 +39,7 @@ int rgeInit(const char* argv0,
 
 	rgeLogDebug("initializing game window");
 	initGameWindow(width, height, title);
+
 
 	return 0;
 }
@@ -123,4 +131,72 @@ void rgeDrawTexture(void* texture, int x, int y)
 {
 	auto raylibTex = (Texture2D*)texture;
 	DrawTexture(*raylibTex, x, y, WHITE);
+}
+
+void* rgeCreateFrameBuffer(int w, int h)
+{
+	RenderTexture2D* frameBuffer = (RenderTexture2D*)malloc(sizeof(RenderTexture2D));
+	*frameBuffer = LoadRenderTexture(w, h);
+
+	return (void*)frameBuffer;
+}
+
+void rgeFreeFrameBuffer(void* frameBuffer)
+{
+	RenderTexture2D* fb = (RenderTexture2D*)frameBuffer;
+	UnloadRenderTexture(*fb);
+	free(fb);
+}
+
+void rgeSetFrameBuffer(void* frameBuffer)
+{
+	RenderTexture2D* fb = (RenderTexture2D*)frameBuffer;
+	BeginTextureMode(*fb);
+}
+
+void rgeEndFrameBuffer()
+{
+	EndTextureMode();
+}
+
+void rgeFlipFrameBuffer(void* frameBuffer)
+{
+	RenderTexture2D* fb = (RenderTexture2D*)frameBuffer;
+	Rectangle sourceRec = { 0.0f, 0.0f, (float)fb->texture.width, -(float)fb->texture.height };
+	Rectangle destRec = { paddingX, paddingY, scaledWidth, scaledHeight };
+	Vector2 origin = { 0.0f, 0.0f };
+	DrawTexturePro(fb->texture, sourceRec, destRec, origin, 0.0f, WHITE);
+}
+
+void rgeScaleFrameBuffer(int originalWidth, int originalHeight)
+{
+	int targetWidth;
+	int targetHeight;
+	float scaleFactor;
+	float scaleFactorWidth;
+	float scaleFactorHeight;
+
+	if (IsWindowFullscreen())
+	{
+		targetWidth = GetRenderWidth();
+		targetHeight = GetRenderHeight();
+	}
+	else
+	{
+		targetWidth = GetScreenWidth();
+		targetHeight = GetScreenHeight();
+	}
+
+	// Calculate scale factor to maintain aspect ratio
+	scaleFactorWidth = (float)targetWidth / originalWidth;
+	scaleFactorHeight = (float)targetHeight / originalHeight;
+	scaleFactor = scaleFactorWidth < scaleFactorHeight ? scaleFactorWidth : scaleFactorHeight;
+
+	// Calculate scaled dimensions
+	scaledWidth = originalWidth * scaleFactor;
+	scaledHeight = originalHeight * scaleFactor;
+
+	// Calculate padding to center the scaled image
+	paddingX = (targetWidth - scaledWidth) / 2;
+	paddingY = (targetHeight - scaledHeight) / 2;
 }

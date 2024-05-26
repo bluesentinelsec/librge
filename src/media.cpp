@@ -20,6 +20,7 @@ void* rgeLoadMediaImage(const char* fileName)
 	assert(img.data != NULL);
 
 	auto* tex = new Texture2D(LoadTextureFromImage(img));
+	SetTextureFilter(*tex, TEXTURE_FILTER_POINT);
 
 	UnloadImage(img);
 	free(fileData);
