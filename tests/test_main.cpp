@@ -38,7 +38,6 @@ TEST(LibraryTests, TestEngine)
 		rgeClearRenderer(0, 0, 0, 255);
 		rgeFlipFrameBuffer(frameBuffer);
 		rgeEndFrame();
-		rgeFlipBackbuffer(320, 200);
 	}
 
 	rgeFreeFrameBuffer(frameBuffer);

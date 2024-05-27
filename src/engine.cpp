@@ -11,7 +11,6 @@ float paddingX;
 float paddingY;
 
 
-
 static int initVirtualFS(const char* argv0,
 		const char* organization,
 		const char* appName,
@@ -50,8 +49,6 @@ void rgeExit()
 {
 	rgeLogInfo("closing game engine");
 
-	rgeLogDebug("closing backbuffer texture");
-	UnloadRenderTexture(backbuffer);
 
 	rgeLogDebug("closing game window");
 	CloseWindow();
@@ -71,7 +68,6 @@ bool rgeIsWindowClosing()
 
 void rgeBeginFrame()
 {
-	BeginTextureMode(backbuffer);
 	BeginDrawing();
 }
 
@@ -94,7 +90,6 @@ static void initGameWindow(const int width, const int height, const char* title)
 
 	InitWindow(width, height, title);
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
-	backbuffer = LoadRenderTexture(width, height);
 
 // disable close on ESC on release builds
 #ifdef NDEBUG

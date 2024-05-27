@@ -7,8 +7,10 @@ extern "C"
 
 #include "logger.h"
 
-#include <stdbool.h>
 #include <assert.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
 
 int
 rgeInit(const char* argv0,
