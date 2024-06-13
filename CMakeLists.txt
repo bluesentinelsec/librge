@@ -8,6 +8,8 @@ if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif ()
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 
 #--------------------------
 #   Source and header files

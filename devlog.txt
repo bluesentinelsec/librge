@@ -1,3 +1,6 @@
+6/13/2024
+- fixed Linux build failures by enabling position independent code compiler flag
+
 5/26/2024
 - added proper window scaling
 
