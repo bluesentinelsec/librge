@@ -1,3 +1,7 @@
+6/23/2024
+- I was testing out the codebase using my new vimrc configuration. The language server was not correctly interpreting my include paths. I learned that you can use cmake to create a file, 'compile_commands.json', which lists the specific commands needed to compile the program. The language server seems to identify and read this file, and as a result, it now correctly interprets my include paths.
+- Next task: setup smooth scrolling
+
 6/13/2024
 - fixed Linux build failures by enabling position independent code compiler flag
 
