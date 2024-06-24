@@ -24,8 +24,8 @@ int rgeInit(const char* argv0,
 		const char* appName,
 		const char* archiveExt,
 		const char* mediaPath,
-		const int width,
-		const int height,
+		int width,
+		int height,
 		const char* title
 )
 {
