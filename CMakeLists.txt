@@ -20,6 +20,7 @@ set(SOURCE_FILES
         src/engine.cpp
         src/fileio.cpp
         src/media.cpp
+        src/camera2D.cpp
 )
 
 set(HEADER_FILES

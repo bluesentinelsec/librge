@@ -11,14 +11,8 @@ extern "C"
 #include <stdbool.h>
 #include <stdlib.h>
 
-    int rgeInit(const char *argv0, 
-                const char *organization, 
-                const char *appName, 
-                const char *archiveExt,
-                const char *mediaPath, 
-                int width, 
-                int height, 
-                const char *title);
+    int rgeInit(const char *argv0, const char *organization, const char *appName, const char *archiveExt,
+                const char *mediaPath, int width, int height, const char *title);
 
     void rgeExit();
     bool rgeIsWindowClosing();
@@ -39,6 +33,12 @@ extern "C"
     void rgeEndFrameBuffer();
     void rgeFlipFrameBuffer(void *frameBuffer);
     void rgeScaleFrameBuffer(int originalWidth, int originalHeight);
+
+    void *rgeCreateCamera2D(float targetX, float targetY, float offsetX, float offsetY, float rotation, float zoom);
+    void rgeFreeCamera2D(void *camera2D);
+    void rgeBeginMode2D(void *camera2D);
+    void rgeEndMode2D();
+    void rgeMoveCamera(void *camera2D, float x, float y);
 
 #ifdef __cplusplus
 }
