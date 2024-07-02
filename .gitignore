@@ -36,3 +36,4 @@ build
 cmake-build*
 venv
 devlog.txt
+.DS_Store
