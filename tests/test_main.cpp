@@ -1,3 +1,5 @@
+#include "librge/keycodes.h"
+#include "librge/logger.h"
 #include <gtest/gtest.h>
 
 #include <librge/rge.h>
@@ -20,6 +22,17 @@ TEST(LibraryTests, TestEngine)
 
     while (!rgeIsWindowClosing())
     {
+        if (rgeIsKeyDown(rgeKEY_RIGHT))
+        {
+            rgeLogInfo("right key pressed");
+            rgeMoveCamera(camera2D, 1, 0);
+        }
+        if (rgeIsKeyDown(rgeKEY_LEFT))
+        {
+            rgeLogInfo("left key pressed");
+            rgeMoveCamera(camera2D, -1, 0);
+        }
+
         // draw all sprites to a frame buffer so we can scale to the display size
         rgeSetFrameBuffer(frameBuffer);
         rgeClearRenderer(255, 255, 255, 255);
@@ -27,7 +40,7 @@ TEST(LibraryTests, TestEngine)
         // draw to camera
         rgeBeginMode2D(camera2D);
         rgeDrawTexture(backgroundTexture, 0, 0);
-        rgeMoveCamera(camera2D, 600.0f, 100.0f);
+        //rgeMoveCamera(camera2D, 600.0f, 100.0f);
         rgeEndMode2D();
         rgeEndFrameBuffer();
 

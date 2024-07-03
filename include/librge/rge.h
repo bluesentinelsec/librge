@@ -5,6 +5,7 @@ extern "C"
 {
 #endif
 
+#include "keycodes.h"
 #include "logger.h"
 
 #include <assert.h>
@@ -39,6 +40,9 @@ extern "C"
     void rgeBeginMode2D(void *camera2D);
     void rgeEndMode2D();
     void rgeMoveCamera(void *camera2D, float x, float y);
+
+    bool rgeIsKeyPressed(int key);
+    bool rgeIsKeyDown(int key);
 
 #ifdef __cplusplus
 }

@@ -33,5 +33,8 @@ void rgeEndMode2D()
 void rgeMoveCamera(void *camera2D, float x, float y)
 {
     Camera2D *camera = static_cast<Camera2D *>(camera2D);
-    camera->target = {x, y};
+    auto currentPosition = camera->target;
+    currentPosition.x += x;
+    currentPosition.y += y;
+    camera->target = currentPosition;
 }

@@ -1,3 +1,11 @@
+7/2/2024
+- Added some basic keyboard functions
+- They are just a wrapper around raylib's keyboard functions
+- Keyboard functions prove camera scrolling works correctly in the simple case
+- Next I need to add a mock character, and prove the camera can center on it as the character moves around the map
+- After that we'll need collisions, sound, music, and text/UI functions
+- That should be enough to make a simple pong game
+
 7/1/2024
 - Added some camera functions
 - Need to add some basic keyboard input to test camera movement
