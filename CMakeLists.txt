@@ -16,7 +16,6 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 #   Source and header files
 #--------------------------
 set(SOURCE_FILES
-        src/systems.cpp
         src/engine.cpp
         src/fileio.cpp
         src/media.cpp

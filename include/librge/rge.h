@@ -13,13 +13,14 @@ extern "C"
 #include <stdlib.h>
 
     int rgeInit(const char *argv0, const char *organization, const char *appName, const char *archiveExt,
-                const char *mediaPath, int width, int height, const char *title);
+                const char *mediaPath, int width, int height, const char *title, int fps);
 
     void rgeExit();
     bool rgeIsWindowClosing();
     void rgeBeginFrame();
     void rgeEndFrame();
     void rgeClearRenderer(int r, int g, int b, int a);
+    float rgeGetDeltaTime();
 
     int rgeGetMediaFileSize(const char *path);
     int rgeReadMediaFile(const char *path, char *buffer, int size);

@@ -1,3 +1,9 @@
+7/4/2024
+- Added a mock player with working camera scrolling
+- Added a GetDeltaTime() function
+- TODO: animation, sound, music, text, collisions
+- Happy 4th of July
+
 7/2/2024
 - Added some basic keyboard functions
 - They are just a wrapper around raylib's keyboard functions
@@ -5,6 +11,7 @@
 - Next I need to add a mock character, and prove the camera can center on it as the character moves around the map
 - After that we'll need collisions, sound, music, and text/UI functions
 - That should be enough to make a simple pong game
+- The pong game should drive the high-level C++ API
 
 7/1/2024
 - Added some camera functions
