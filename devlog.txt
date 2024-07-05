@@ -1,6 +1,8 @@
 7/5/2024
 - delta time was causing jitter, so I removed it. The solution works as long as the host computer hits the target frame rate
 - added a simple collision rect checker
+- Audio will take a little more work due to memory management
+    - need to encapsulate sound and music in a class and use smart pointers
 
 7/4/2024
 - Added a mock player with working camera scrolling

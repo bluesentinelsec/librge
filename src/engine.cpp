@@ -29,12 +29,17 @@ int rgeInit(const char *argv0, const char *organization, const char *appName, co
     rgeLogDebug("initializing game window");
     initGameWindow(width, height, title, fps);
 
+    rgeLogDebug("initializing audio");
+    InitAudioDevice();
     return 0;
 }
 
 void rgeExit()
 {
     rgeLogInfo("closing game engine");
+
+    rgeLogDebug("closing audio");
+    CloseAudioDevice();
 
     rgeLogDebug("closing game window");
     CloseWindow();
