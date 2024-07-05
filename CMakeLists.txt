@@ -21,6 +21,7 @@ set(SOURCE_FILES
         src/media.cpp
         src/camera2D.cpp
         src/keyboard.cpp
+        src/collisions.cpp
 )
 
 set(HEADER_FILES

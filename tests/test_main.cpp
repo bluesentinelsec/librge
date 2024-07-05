@@ -17,7 +17,7 @@ TEST(LibraryTests, TestEngine)
     void *backgroundTexture = rgeLoadMediaImage("images/backgrounds/scroll_test.png");
     GTEST_ASSERT_TRUE(backgroundTexture != nullptr);
 
-    void *playerTexture = rgeLoadMediaImage("images/actors/ball.png");
+    void *playerTexture = rgeLoadMediaImage("images/actors/player.png");
     GTEST_ASSERT_TRUE(playerTexture != nullptr);
     float playerX = 320;
     float playerY = 200;
@@ -26,30 +26,30 @@ TEST(LibraryTests, TestEngine)
 
     float offsetX = displayWidth / 2.0f;
     float offsetY = displayHeight / 2.0f;
-    void *camera2D = rgeCreateCamera2D(playerX, playerY, offsetX, offsetY, 0.0f, 1.0f);
+    void *camera2D = rgeCreateCamera2D(playerX + 16, playerY + 16, offsetX, offsetY, 0.0f, 1.0f);
 
     while (!rgeIsWindowClosing())
     {
 
         if (rgeIsKeyDown(rgeKEY_RIGHT))
         {
-            playerX += 100 * rgeGetDeltaTime();
+            playerX += 1 * 5;
         }
         if (rgeIsKeyDown(rgeKEY_LEFT))
         {
-            playerX -= 100 * rgeGetDeltaTime();
+            playerX -= 1 * 5;
         }
         if (rgeIsKeyDown(rgeKEY_UP))
         {
-            playerY -= 100 * rgeGetDeltaTime();
+            playerY -= 1 * 5;
         }
         if (rgeIsKeyDown(rgeKEY_DOWN))
         {
-            playerY += 100 * rgeGetDeltaTime();
+            playerY += 1 * 5;
         }
 
         // camera follows the player position
-        rgeMoveCamera(camera2D, playerX, playerY);
+        rgeMoveCamera(camera2D, playerX + 16, playerY + 16);
 
         // draw all sprites to a frame buffer so we can scale to the display size
         rgeSetFrameBuffer(frameBuffer);
@@ -69,6 +69,9 @@ TEST(LibraryTests, TestEngine)
         rgeFlipFrameBuffer(frameBuffer);
         rgeEndFrame();
     }
+
+    bool collided = rgeIsCollisionRect(0.0f, 0.0f, 16.0f, 16.0f, 0.0f, 0.0f, 16.0f, 16.0f);
+    GTEST_ASSERT_TRUE(collided);
 
     rgeFreeCamera2D(camera2D);
     rgeFreeFrameBuffer(frameBuffer);
