@@ -28,11 +28,14 @@ set(SOURCE_FILES
         src/camera2D.cpp
         src/keyboard.cpp
         src/collisions.cpp
+        src/sound.cpp
 )
 
 set(HEADER_FILES
         include/librge/rge.h
         include/librge/logger.h
+        include/librge/keycodes.h
+        include/librge/sound.h
 )
 
 

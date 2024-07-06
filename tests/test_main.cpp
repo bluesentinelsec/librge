@@ -28,6 +28,9 @@ TEST(LibraryTests, TestEngine)
     float offsetY = displayHeight / 2.0f;
     void *camera2D = rgeCreateCamera2D(playerX + 16, playerY + 16, offsetX, offsetY, 0.0f, 1.0f);
 
+    void *sound = rgeNewSound("sound/smb_pause.wav", ".wav");
+    rgePlaySound(sound);
+
     while (!rgeIsWindowClosing())
     {
 
@@ -73,6 +76,7 @@ TEST(LibraryTests, TestEngine)
     bool collided = rgeIsCollisionRect(0.0f, 0.0f, 16.0f, 16.0f, 0.0f, 0.0f, 16.0f, 16.0f);
     GTEST_ASSERT_TRUE(collided);
 
+    rgeFreeSound(sound);
     rgeFreeCamera2D(camera2D);
     rgeFreeFrameBuffer(frameBuffer);
     rgeFreeMediaImage(backgroundTexture);
