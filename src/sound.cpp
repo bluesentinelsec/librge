@@ -4,61 +4,60 @@
 
 class rgeSound
 {
-public:
-	rgeSound(const char* path, const char* fileType);
+  public:
+    rgeSound(const char *path, const char *fileType);
 
-	~rgeSound();
+    ~rgeSound();
 
-	void rgePlaySound();
+    void rgePlaySound();
 
-private:
-	unsigned char* fileData;
-	Wave wav;
-	Sound sound;
+  private:
+    unsigned char *fileData;
+    Wave wav;
+    Sound sound;
 };
 
-rgeSound::rgeSound(const char* path, const char* fileType)
+rgeSound::rgeSound(const char *path, const char *fileType)
 {
 
-	int dataSize = rgeGetMediaFileSize(path);
-	assert(dataSize > 0);
+    int dataSize = rgeGetMediaFileSize(path);
+    assert(dataSize > 0);
 
-	fileData = new unsigned char[dataSize];
-	int ret = rgeReadMediaFileWAV(path, fileData, dataSize);
-	assert(ret == 0);
+    fileData = new unsigned char[dataSize];
+    int ret = rgeReadMediaFileWAV(path, fileData, dataSize);
+    assert(ret == 0);
 
-	wav = LoadWaveFromMemory(fileType, fileData, dataSize);
-	sound = LoadSoundFromWave(wav);
-
+    wav = LoadWaveFromMemory(fileType, fileData, dataSize);
+    sound = LoadSoundFromWave(wav);
 }
 
 rgeSound::~rgeSound()
 {
-	UnloadSound(sound);
-	UnloadWave(wav);
-	free(fileData);
-	fileData = nullptr;
+    UnloadSound(sound);
+    UnloadWave(wav);
+    free(fileData);
+    fileData = nullptr;
 }
 
 void rgeSound::rgePlaySound()
 {
-	PlaySound(sound);
+    PlaySound(sound);
 }
 
-void* rgeNewSound(const char* path, const char* fileType)
+void *rgeNewSound(const char *path, const char *fileType)
 {
-	auto* sound = new rgeSound(path, fileType);
-	return static_cast<void*>(sound);
+    auto *sound = new rgeSound(path, fileType);
+    return static_cast<void *>(sound);
 }
 
-void rgeFreeSound(void* sound)
+void rgeFreeSound(void *sound)
 {
-	auto* aSound = static_cast<rgeSound*>(sound);
-	delete aSound;
+    auto *aSound = static_cast<rgeSound *>(sound);
+    delete aSound;
 }
 
-void rgePlaySound(void* sound)
+void rgePlaySound(void *sound)
 {
-	auto* aSound = static_cast<rgeSound*>(sound);
-	aSound->rgePlaySound();
+    auto *aSound = static_cast<rgeSound *>(sound);
+    aSound->rgePlaySound();
 }

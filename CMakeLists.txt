@@ -29,6 +29,7 @@ set(SOURCE_FILES
         src/keyboard.cpp
         src/collisions.cpp
         src/sound.cpp
+        src/music.cpp
 )
 
 set(HEADER_FILES
@@ -36,6 +37,7 @@ set(HEADER_FILES
         include/librge/logger.h
         include/librge/keycodes.h
         include/librge/sound.h
+        include/librge/music.h
 )
 
 
