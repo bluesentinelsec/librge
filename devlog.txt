@@ -1,3 +1,7 @@
+7/6/2024
+- Added basic music functions
+- need to add UI text; should be ready for a tiled map parser after
+
 7/5/2024
 - delta time was causing jitter, so I removed it. The solution works as long as the host computer hits the target frame rate
 - added a simple collision rect checker
